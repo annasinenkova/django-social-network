@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "clonestagram"
+version = "0.1.0"
+description = ""
+authors = []
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^4.0.2"
+flake8 = "^4.0.1"
+gunicorn = "^20.1.0"
+django-registration = "^3.2"
+psycopg2 = "^2.9.3"
+Pillow = "^9.0.1"
+social-auth-app-django = "^5.0.0"
+python-social-auth = "^0.3.6"
+django-allauth = "^0.50.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+flake8 = "^4.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+

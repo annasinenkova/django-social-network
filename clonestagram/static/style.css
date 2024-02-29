@@ -1,0 +1,89 @@
+.formstyle {
+    width: 420px;
+    border-radius:10px;
+    height: 715px;
+    background-size: cover;
+    background-position: center;
+}
+
+.block{
+    border: 50px solid #e2e2e2;
+    border-radius: 4px;
+    box-shadow: 0 0 5px -4px rgba(128, 128, 128, 0.69);
+    background: white;
+    padding: 10px;
+    margin: 5px;
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card{
+    margin-bottom: 20px;
+}
+
+.fieldstyle {
+    border: 0;
+    border-radius: 30px;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06) !important;
+    background: rgba( 0,0,0,.6) !important;
+    color: #ffffff !important;
+}
+
+.labelstyle {
+    color: #c0c0c0;
+}
+
+.avatarstyle {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#mainbutton {
+    text-decoration: underline;
+    text-decoration-color: #739e8c;
+    line-height: 1.5em;
+    border:0;
+    background-color: transparent;
+    border-radius:30px;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+#addbutton {
+    border:0;
+    background-color: transparent;
+    border-radius:30px;
+    color: #c0c0c0;
+    font-size: 30px;
+}
+
+#idbody {
+    background-color: #fafafa;
+}
+
+#idspan {
+    font-family: cursive;
+    font-size: 60px; 
+    color: #ffffff;
+}
+
+#idbutton {
+    border-radius:30px;
+    height: 35px;
+    bottom: -15px;
+    position: relative;
+    font-size: 20px;
+    background: #739e8c;
+    border: none;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+

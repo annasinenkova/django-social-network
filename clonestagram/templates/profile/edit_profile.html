@@ -1,0 +1,106 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block content %}
+            
+<body id="idbody">
+
+<div class="container" >
+    <div class="border mt-5 p-5 mx-auto formstyle" style="background-image: url({% static 'bg.jpg' %}); height: 870px;">
+        
+        <span class="mt-4 d-block mx-auto" id="idspan">
+            <p align="center">Edit Profile</p>
+        </span>
+
+        <form method="POST" class="d-flex flex-column" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <label for="Username" class="mt-2 labelstyle">Username</label>
+            <input
+                type="text"
+                id="Username"
+                name="username"
+                class="form-control fieldstyle"
+                placeholder="Username"
+                value='{{ user_form.username.value|default_if_none:"" }}'
+            />
+            
+            <label for="First Name" class="mt-2 labelstyle">First Name</label>
+            <input
+                type="text"
+                id="First Name"
+                name="first_name"
+                class="form-control fieldstyle"
+                placeholder="First Name"
+                value='{{ user_form.first_name.value|default_if_none:"" }}'
+            />
+            
+            <label for="Last Name" class="mt-2 labelstyle">Last Name</label>
+            <input
+                type="text"
+                id="Last Name"
+                name="last_name"
+                class="form-control fieldstyle"
+                placeholder="Last Name"
+                value='{{ user_form.last_name.value|default_if_none:"" }}'
+            />
+            
+            <label for="Email" class="mt-2 labelstyle">Email</label>
+            <input
+                type="email"
+                id="Email"
+                name="email"
+                class="form-control fieldstyle"
+                placeholder="Email"
+                value='{{ user_form.email.value|default_if_none:"" }}'
+            />
+
+            <label for="Birth Date" class="mt-2 labelstyle">Birth Date</label>
+            <input
+                type="date"
+                id="Birth Date"
+                name="birth_date"
+                class="form-control fieldstyle"
+                value='{{ profile_form.birth_date.value|date:"Y-m-d" }}'
+            />
+
+            <label for="Country" class="mt-2 labelstyle">Country</label>
+            <input
+                type="text"
+                id="Country"
+                name="country"
+                class="form-control fieldstyle"
+                placeholder="Country"
+                value='{{ profile_form.country.value|default_if_none:"" }}'
+            />
+
+            <label for="Bio" class="mt-2 labelstyle">Bio</label>
+            <input
+                type="text"
+                id="Bio"
+                name="bio"
+                class="form-control fieldstyle"
+                placeholder="Bio"
+                value='{{ profile_form.bio.value|default_if_none:"" }}'
+            />
+          
+            <label for="Avatar" class="mt-2 labelstyle">Avatar</label>
+            <input
+                type="file"
+                id="Avatar"
+                name="avatar"
+                class="form-control fieldstyle"
+            />
+
+            <button
+                type="submit"
+                id="idbutton"
+                class="btn btn-sm btn-primary btn-block mt-4"
+            >
+                Save Changes
+            </button>
+            
+        </form>
+    </div>
+</div>
+
+{% endblock %}

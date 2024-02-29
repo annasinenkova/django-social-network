@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body id="idbody"></body>
+
+<nav class="navbar navbar-expand-lg navbar-light border-bottom border-dark sticky-top" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/main">
+            <img src="/static/logo.jpg" class="img-thumbnail" alt="" style="width: 180px; height: 80px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/main">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/post_create">Добавить пост</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="/settings">Настройки</a>
+                </li>
+            </ul>
+            
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="/profile">
+                        <img src= "{{ avatar.url }}" class="img-fluid avatarstyle">
+                    </a>
+                    <a class="nav-link d-inline" href="/profile">{{ user.username }}</a>
+                    <a class="nav-link d-inline" href="/logout">Выйти</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-7" style="margin: 20px;" id="post">
+            <div class="card border border-dark">
+                <div class="card-body">
+                    <img src= "{{ postAuthor.avatar.url }}" class="img-fluid avatarstyle">
+                    {{ post.user }}
+                    <div class="d-inline float-end">{{ post.created_date }}</div>
+                </div>
+                <img src= "{{ post.photo.url }}" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-md-4" style="margin-top: 20px;">
+            <div class="card border border-dark">
+                <div class="card-body">
+                    <h5 class="card-title"> 
+                        <img src= "{{ postAuthor.avatar.url }}" class="img-fluid avatarstyle">
+                        {{ post.user }}: 
+                    </h5>
+                    <p class="card-text"> {{ post.caption }} </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for comm in comments %}
+                    <li class="list-group-item">  
+                        <b>{{ comm.user }}:</b> {{ comm.content }}
+                        <p class="card-text"> {{ comm.created_at }} </p>
+                    </li>
+                    {% endfor %}
+                </ul>
+                
+                {% if new_comment %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <label for="comment">Оставить комментарий:</label>
+                            {{ comment_form.content }}
+                        <button type="submit" class="btn btn-primary  btn-sm">Опубликовать</button>
+                        <script>
+                            document.getElementById('comment').reset();
+                        </script>
+                    </form>
+                {% else %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <label for="comment">Оставить комментарий:</label>
+                            {{ comment_form.content }}
+                        <button type="submit" class="btn btn-primary  btn-sm">Опубликовать</button>
+                        <script>
+                            document.getElementById('comment').reset();
+                        </script>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

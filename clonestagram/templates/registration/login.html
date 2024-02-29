@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<body id="idbody">
+
+<div class="container">
+    <div class="border mt-5 p-5 mx-auto formstyle" style="background-image: url({% static 'bg.jpg' %})">
+
+        <span class="mt-4 d-block mx-auto" id="idspan">
+            <p align="center">Clonestagram</p>
+        </span>
+
+        <div class="btn-group" role="group">
+            <button
+                type="submit"
+                id="mainbutton"
+                class="btn btn-xs btn-primary btn-block mt-3 w-40 mx-auto"
+            >
+                SIGN IN
+            </button>
+
+            <form action="/register">
+                <button
+                    type="submit"
+                    id="addbutton"
+                    class="btn btn-xs btn-primary btn-block mt-3 w-40 mx-auto"
+                >
+                    SIGN UP
+                </button>
+            </form>
+        </div>
+
+        <form method="POST" class="d-flex flex-column">
+            {% csrf_token %}
+
+            <label for="Username" class="mt-3 labelstyle">Username</label>
+            <input
+                type="text"
+                id="Username"
+                name="username"
+                value='{{ form.username.value|default_if_none:"" }}'
+                class="form-control fieldstyle"
+                placeholder="Type your login here"
+                required
+            />
+
+            <label for="Password" class="mt-3 labelstyle">Password</label>
+            <input
+                type="password"
+                id="Password"
+                name="password"
+                class="form-control fieldstyle"
+                placeholder="Type your password here"
+                required
+            />
+
+            <button
+                type="submit"
+                id="idbutton"
+                class="btn btn-sm btn-primary btn-block mt-5"
+            >
+                Sign in
+            </button>
+
+        </form>
+
+        <button
+            class="btn btn-lg mx-auto d-block btn-link btn-block mt-5"
+            type="submit"
+            style="font-size: 15px; color: #c0c0c0; bottom: -80px; position: relative;"
+        >
+            Forgot Password?
+        </button>
+
+       <a href="{% url 'social:begin' 'vk-oauth2' %}"><img src="/static/lvk.png" height="48px" class="avatar-3" data-toggle="tooltip">Login with VK</a>
+
+    </div>
+</div>
+
+{% endblock %}
